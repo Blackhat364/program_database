@@ -13,6 +13,7 @@ Tables database2;
 
 int main() {
     #ifdef TEST
+    printf("ddd\n");
     handle_error(init_database(database_ptr),"init_database", " malloc memory error");
     clean_file("error_log.txt");
     Users user = {
