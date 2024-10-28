@@ -1,0 +1,1 @@
+Error Time: %[^|] | Error: 6485644 | Function: %[^|] | Message: %[^|]
