@@ -2,14 +2,9 @@
 #define SERVER_IP "127.0.0.1"  
 #define SERVER_PORT 2000       
 
-
-#include "database_api.h"
-#define SERVER_IP "127.0.0.1"  
-#define SERVER_PORT 2000       
-
 char* requests_id;
 
-SOCKET init_client(struct sockaddr_in* server_addr, char* name1, char* pass1, Flag flag) {
+SOCKET init_client(struct sockaddr_in* server_addr,char *server_ip,int server_port, char* name1, char* pass1, Flag flag) {
     WSADATA wsaData;
     SOCKET clientSocket;
     char buffer[200];
@@ -31,8 +26,8 @@ SOCKET init_client(struct sockaddr_in* server_addr, char* name1, char* pass1, Fl
 
     // Configure server address
     server_addr->sin_family = AF_INET;
-    server_addr->sin_addr.s_addr = inet_addr(SERVER_IP);  // Convert IP address to network byte order
-    server_addr->sin_port = htons(SERVER_PORT);           // Convert port number to network byte order
+    server_addr->sin_addr.s_addr = inet_addr(server_ip);  // Convert IP address to network byte order
+    server_addr->sin_port = htons(server_port);           // Convert port number to network byte order
 
     // Connect to the server
     result = connect(clientSocket, (struct sockaddr*)server_addr, sizeof(*server_addr));
