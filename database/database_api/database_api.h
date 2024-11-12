@@ -130,7 +130,7 @@ typedef struct
     char response[255];
 }Server_response;
 
-SOCKET init_client(struct sockaddr_in* server_addr, char* name, char* pass, Flag flag);
+SOCKET init_client(struct sockaddr_in* server_addr, char* server_ip, int server_port, char* name1, char* pass1, Flag flag);
 Server_response send_request(SOCKET server_socket, Client_request requset);
 int set_request(Client_request* client_request,Command_code cmd, Parameters parameters);
 int init_array(void* arr, char type, int length);
