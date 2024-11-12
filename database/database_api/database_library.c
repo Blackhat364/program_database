@@ -1052,7 +1052,7 @@ int get_primary_id(Tables database, Flag table) {
     return E_NOT_F;  
 }
 
-int check_uniqueness(Tables* database, Flag attribute, char* data) {
+int check_uniqueness(Tables* database, Flag attribute, char* data){
     int attribute_hash_table;
     switch (attribute) {
     case USER_NAME:
