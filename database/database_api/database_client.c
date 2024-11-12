@@ -1,14 +1,23 @@
 #include "database_api.h"
 
 
-int main() {
-	
+int main(int argc, char** argv) {
+	char server_ip[] = "127.0.0.1"; 
+	int server_port = 2000;
+
+	if (argc > 1) {
+		strncpy(server_ip, argv[1], sizeof(server_ip) - 1);  
+		server_ip[sizeof(server_ip) - 1] = '\0';  
+		server_port = atoi(argv[2]);  
+	}
+
+
 	struct sockaddr_in server_addr;
-	SOCKET server_socket = init_client(&server_addr, "dror_admin","d1r2o3r4", LEVEL1);
+	SOCKET server_socket = init_client(&server_addr,server_ip,server_port, "dror_admin","d1r2o3r4", LEVEL1);
 	while (server_socket == INVALID_SOCKET) {
 		printf("client initialization failed!\n");
 		Sleep(3000);
-		server_socket = init_client(&server_addr,NULL,NULL,LEVEL0);
+		server_socket = init_client(&server_addr, server_ip, server_port, ,NULL,NULL,LEVEL0);
 	}
 	
 	bool run = TRUE;
